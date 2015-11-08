@@ -1,0 +1,8 @@
+1. [somaa@flux-login3 ~]$ awk '/^>/{print ">" ++i; next} {print}' < Homo_sapiens.GRCh38.cds.all.fa > num_Homo_sapiens.GRCh38.cds.all.fa
+
+2. [somaa@flux-login3 ~]$ awk '!/^#/ { print $1, $2, $3, $4, $5}' Homo_sapiens.GRCh38.82.abinitio.gtf > Homo_sapiens.GRCh38.82.abinitio.bed
+
+3. [somaa@flux-login3 ~]$ grep "exon" Homo_sapiens.GRCh38.82.abinitio.gtf > ex_Homo_sapiens.GRCh38.82.abinitio.gtf
+   
+   [somaa@flux-login3 ~]$ grep "transcript" Homo_sapiens.GRCh38.82.abinitio.gtf > trans_Homo_sapiens.GRCh38.82.abinitio.gtf
+
