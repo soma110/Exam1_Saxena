@@ -1,0 +1,5 @@
+1.101933 (grep ">" Homo_sapiens.GRCh38.cds.all.fa | wc -l)
+
+2. 2066758 (wc -l Homo_sapiens.GRCh38.cds.all.fa)
+
+3. Yes, count is 2905 (grep "AGATCGG" Homo_sapiens.GRCh38.cds.all.fa | less)
