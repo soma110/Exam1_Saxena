@@ -1,0 +1,50 @@
+#PBS -N Question12
+#PBS -V 
+#PBS -A eeb416f15_ﬂux
+#PBS -l qos=ﬂux 
+#PBS -q ﬂux 
+#PBS -l nodes=1:ppn=12,mem=47gb,walltime=02:00:00
+#PBS -M somaa@umich.edu
+#PBS -m abe
+#PBS -j oe
+
+#!/bin/bash
+set -e
+set -u
+set -o pipefail
+
+#get file
+https://www.dropbox.com/s/1gxnyybqlazgvhm/BioinformaticsNov2.zip?dl=0
+unzip BioinformaticsNov2.zip
+
+#get sam2counts
+wget https://raw.githubusercontent.com/vsbuffalo/sam2counts/master/sam2counts.py
+
+#get sequences
+wget http://sourceforge.net/projects/rseqc/files/RSeQC-2.4.tar.gz 
+tar -xvzf RSeQC-2.4.tar.gz 
+
+#change working directory
+cd RSeQC-2.4 
+
+#modules
+module load med bwa 
+module load python/2.7.3 
+module load med samtools
+python setup.py install --user
+
+#start interactive shell
+#qsub -I -V -l procs=2 -l walltime=3:00:00 -A eeb416f15_flux -l qos=flux -qflux
+
+#change working directory
+cd ..
+
+#index
+bwa index -a is IZNU-SOAPdenovo-Trans-assembly.fa > bwa_index.stdout 2> bwa_index.stderr
+
+#align 1 and 2
+bwa aln -t4 IZNU-SOAPdenovo-Trans-assembly.fa IZNU-read_1.fq > IZNU_R1.sai 2> IZNU_R1_bwa_aln.stderr
+bwa aln -t4 IZNU-SOAPdenovo-Trans-assembly.fa IZNU-read_2.fq > IZNU_R2.sai 2> IZNU_R2_bwa_aln.stderr
+
+#.sam alignment file
+bwa sampe IZNU-SOAPdenovo-Trans-assembly.fa IZNU_R1.sai IZNU_R2.sai IZNU-read_1.fq IZNU-read_2.fq > IZNU.sam 2> IZNU_sampe.stderr
