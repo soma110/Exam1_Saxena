@@ -1,0 +1,5 @@
+The E-value is the number of hits with the same level of similarity that you would expect by chance if there were no true 
+matches in the database. A hit with an E-value of 0.01 would be expected to occur once every 100 searches even when there 
+is no true matching the database. 
+3.4 e-178: high confidence, database result is homologous. It is a great alignment and the similarities are not the result 
+of random chance. 
