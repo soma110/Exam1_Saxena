@@ -48,3 +48,7 @@ bwa aln -t4 IZNU-SOAPdenovo-Trans-assembly.fa IZNU-read_2.fq > IZNU_R2.sai 2> IZ
 
 #.sam alignment file
 bwa sampe IZNU-SOAPdenovo-Trans-assembly.fa IZNU_R1.sai IZNU_R2.sai IZNU-read_1.fq IZNU-read_2.fq > IZNU.sam 2> IZNU_sampe.stderr
+
+#change sam file to bam
+$   samtools view -b IZNU.sam > IZNU.bam 
+$   samtools flagstat IZNU.bam
