@@ -1,5 +1,8 @@
-1.101933 ( command line: grep ">" Homo_sapiens.GRCh38.cds.all.fa | wc -l)
+1. 101933 
+   command line: grep ">" Homo_sapiens.GRCh38.cds.all.fa | wc -l
 
-2. 2066758 (command line: wc -l Homo_sapiens.GRCh38.cds.all.fa)
+2. 2066758 
+   command line: wc -l Homo_sapiens.GRCh38.cds.all.fa
 
-3. Yes, count is 2950 (command line: grep "AGATCGG" Homo_sapiens.GRCh38.cds.all.fa | less)
+3. Yes, count is 2950 
+   command line: grep "AGATCGG" Homo_sapiens.GRCh38.cds.all.fa | less
